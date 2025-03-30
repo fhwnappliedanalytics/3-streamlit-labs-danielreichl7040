@@ -7,3 +7,4 @@ sqlalchemy
 psycopg2-binary
 ipython-sql
 jupyter_contrib_nbextensions
+gdown
