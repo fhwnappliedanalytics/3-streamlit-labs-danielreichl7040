@@ -8,7 +8,7 @@ df_artists = pd.read_csv('./data/csv_files/SpotGenTrack/Data Sources/spotify_art
 # App Title
 st.title('Spotify Track App')
 
-# Explode Artists (für mehrere Artists pro Track)
+# Explode Artists 
 df_tracks['artists_id'] = df_tracks['artists_id'].apply(eval)  # <- wichtig, falls als String gespeichert
 track_exploded = df_tracks.explode('artists_id')
 
@@ -21,11 +21,11 @@ search_term = st.text_input('🎵 Enter a track name:')
 
 # Filtern, falls was eingegeben wurde
 if search_term:
-    # Case-insensitive Filter
+    # Case-insensitive using CASE=FALSE
     results = merged_df[merged_df['name'].str.contains(search_term, case=False, na=False)]
 
     if not results.empty:
-        # Zeige relevante Spalten
+
         results_to_display = results[['name', 'artist_name', 'genres']].drop_duplicates()
 
         st.write(f"### Gefundene Ergebnisse für: `{search_term}`")
